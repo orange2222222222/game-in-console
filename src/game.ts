@@ -13,14 +13,13 @@ class Game {
         symbol: string
         color: color
     }
-    constructor(arr: Tile[][] = [[], [], []], dim: number = 3, player: { symbol: string; color: color } = { symbol: '●', color: 'red' },
+    constructor(arr: Tile[][], dim: number = 3, player: { symbol: string; color: color } = { symbol: '●', color: 'red' },
         startingPos: number[] = [0, 0]) {
         this.arr = arr
         this.dim = dim
         this.player = player
         this.pos = { x: startingPos[0], y: startingPos[1] }
     }
-
     private color(color: string[][]) {
         let res  = ''
         const css: string[] = []
@@ -30,7 +29,6 @@ class Game {
         })
         return [res, ...css]
     }
-
     structure() {
         const res: string[][] = []
         this.arr.forEach((e1, i1) => {
@@ -42,7 +40,6 @@ class Game {
         })
         console.log(...this.color(res))
     }
-
     get block(): Tile {
         return this.arr[this.pos.y][this.pos.x]
     }
@@ -59,7 +56,6 @@ class Game {
     }
 
     move(next: direction): void {
-        console.log(this)
         const { x, y } = this.pos
 
         switch (next) {
